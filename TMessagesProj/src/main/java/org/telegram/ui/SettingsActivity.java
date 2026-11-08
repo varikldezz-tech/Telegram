@@ -859,6 +859,8 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         }
 
         items.add(UItem.asCustomShadow(versionView));
+        items.add(UItem.asSettingsCell(99, 0, R.drawable.msg_settings, LocaleController.getString("NapoleonSetting", R.string.NapoleonSetting)));
+        items.add(UItem.asCustomShadow(versionView));
     }
 
     private void presentSettingFragment(BaseFragment fragment) {
@@ -917,6 +919,9 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             return;
         }
         switch (item.id) {
+            case 99:
+                Toast.makeText(getContext(), "Napoléon Mode активирован", Toast.LENGTH_SHORT).show();
+                break;
             case 1:
                 presentSettingFragment(new UserInfoActivity());
                 break;
