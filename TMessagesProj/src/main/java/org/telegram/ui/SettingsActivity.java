@@ -859,7 +859,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         }
 
         items.add(UItem.asCustomShadow(versionView));
-        items.add(UItem.asSettingsCell(99, 0, R.drawable.msg_settings, LocaleController.getString("NapoleonSetting", R.string.NapoleonSetting)));
+        items.add(UItem.asSettingsCell(99, R.drawable.settings_account, LocaleController.getString("NapoleonSetting", R.string.NapoleonSetting), ""));
         items.add(UItem.asCustomShadow(versionView));
     }
 
