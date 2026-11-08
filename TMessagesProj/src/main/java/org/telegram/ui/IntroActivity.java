@@ -143,6 +143,7 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
             "Сообщения шифруются, данные не передаются третьим лицам.",
             "Общайся без границ. Всё, что нужно — в одном приложении."
         };
+        }
             @Override
             protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
                 super.onLayout(changed, left, top, right, bottom);
@@ -172,6 +173,7 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
                 }
             }
         };
+        }
         scrollView.addView(frameContainerView, LayoutHelper.createScroll(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP));
 
         darkThemeDrawable = new RLottieDrawable(R.raw.sun, dp(28), dp(28), true, null);
@@ -342,6 +344,7 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
                 }
             }
         };
+        }
         ScaleStateListAnimator.apply(startMessagingButton, .02f, 1.2f);
         startMessagingButton.setText(LocaleController.getString(R.string.StartMessaging));
         startMessagingButton.setGravity(Gravity.CENTER);
@@ -639,6 +642,7 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
             c.drawCircle(bm.getWidth() / 2f, bm.getHeight() / 2f, size / 2f, paint);
             return bm;
         };
+        }
 
         public EGLThread(SurfaceTexture surface) {
             super("EGLThread");
@@ -851,6 +855,7 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
                 postRunnable(drawRunnable, Math.max((long) (1000 / maxRefreshRate) - drawMs, 0));
             }
         };
+        }
 
         private void loadTexture(GenericProvider<Void, Bitmap> bitmapProvider, int index) {
             loadTexture(bitmapProvider, index, false);
