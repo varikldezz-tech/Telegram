@@ -143,21 +143,6 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
             "Сообщения шифруются, данные не передаются третьим лицам.",
             "Общайся без границ. Всё, что нужно — в одном приложении."
         };
-        titles[0] = ssb;
-
-
-        actionBar.setAddToContainer(false);
-
-        ScrollView scrollView = new ScrollView(context);
-        scrollView.setFillViewport(true);
-
-        RLottieImageView themeIconView = new RLottieImageView(context);
-        FrameLayout themeFrameLayout = new FrameLayout(context);
-        themeFrameLayout.addView(themeIconView, LayoutHelper.createFrame(28, 28, Gravity.CENTER));
-
-        int themeMargin = 4;
-        frameContainerView = new FrameLayout(context) {
-
             @Override
             protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
                 super.onLayout(changed, left, top, right, bottom);
