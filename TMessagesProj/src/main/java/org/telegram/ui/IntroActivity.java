@@ -134,16 +134,45 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
         MessagesController.getGlobalMainSettings().edit().putLong("intro_crashed_time", System.currentTimeMillis()).apply();
 
         titles = new CharSequence[]{
-            "Napoléon",
-            "Быстро и безопасно",
-            "Свобода общения"
+                null,
+                LocaleController.getString(R.string.Page2Title),
+                LocaleController.getString(R.string.Page3Title),
+                LocaleController.getString(R.string.Page5Title),
+                LocaleController.getString(R.string.Page4Title),
+                LocaleController.getString(R.string.Page6Title)
         };
         messages = new String[]{
-            "Добро пожаловать в Napoléon — твой персональный мессенджер.",
-            "Сообщения шифруются, данные не передаются третьим лицам.",
-            "Общайся без границ. Всё, что нужно — в одном приложении."
+                LocaleController.getString(R.string.Page1Message),
+                LocaleController.getString(R.string.Page2Message),
+                LocaleController.getString(R.string.Page3Message),
+                LocaleController.getString(R.string.Page5Message),
+                LocaleController.getString(R.string.Page4Message),
+                LocaleController.getString(R.string.Page6Message)
         };
-        }
+        return true;
+    }
+
+    @Override
+    public View createView(Context context) {
+        logoDrawable = context.getResources().getDrawable(R.drawable.telegram_logo).mutate();
+        logoDrawable.setBounds(0, dp(8.666f), dp(115), dp(35));
+        SpannableStringBuilder ssb = new SpannableStringBuilder(LocaleController.getString(R.string.Page1Title));
+        ssb.setSpan(new ImageSpan(logoDrawable), 0, ssb.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        titles[0] = ssb;
+
+
+        actionBar.setAddToContainer(false);
+
+        ScrollView scrollView = new ScrollView(context);
+        scrollView.setFillViewport(true);
+
+        RLottieImageView themeIconView = new RLottieImageView(context);
+        FrameLayout themeFrameLayout = new FrameLayout(context);
+        themeFrameLayout.addView(themeIconView, LayoutHelper.createFrame(28, 28, Gravity.CENTER));
+
+        int themeMargin = 4;
+        frameContainerView = new FrameLayout(context) {
+
             @Override
             protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
                 super.onLayout(changed, left, top, right, bottom);
@@ -173,7 +202,6 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
                 }
             }
         };
-        }
         scrollView.addView(frameContainerView, LayoutHelper.createScroll(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP));
 
         darkThemeDrawable = new RLottieDrawable(R.raw.sun, dp(28), dp(28), true, null);
@@ -344,7 +372,6 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
                 }
             }
         };
-        }
         ScaleStateListAnimator.apply(startMessagingButton, .02f, 1.2f);
         startMessagingButton.setText(LocaleController.getString(R.string.StartMessaging));
         startMessagingButton.setGravity(Gravity.CENTER);
@@ -642,7 +669,6 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
             c.drawCircle(bm.getWidth() / 2f, bm.getHeight() / 2f, size / 2f, paint);
             return bm;
         };
-        }
 
         public EGLThread(SurfaceTexture surface) {
             super("EGLThread");
@@ -855,7 +881,6 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
                 postRunnable(drawRunnable, Math.max((long) (1000 / maxRefreshRate) - drawMs, 0));
             }
         };
-        }
 
         private void loadTexture(GenericProvider<Void, Bitmap> bitmapProvider, int index) {
             loadTexture(bitmapProvider, index, false);
