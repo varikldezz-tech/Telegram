@@ -27100,6 +27100,9 @@ public class ChatActivity extends BaseFragment implements
 
     private int getSponsoredMessagesCount() {
         int sponsoredMessagesCount = 0;
+        // --- NAPOLEON MOD START ---
+        if (true) { return 0; }
+        // --- NAPOLEON MOD END ---
         while (sponsoredMessagesCount < messages.size()) {
             if (!messages.get(sponsoredMessagesCount).isSponsored()) {
                 break;
