@@ -25,12 +25,14 @@ jobs:
           cache: 'gradle'
 
       - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
+        with:
+          packages: 'platform-tools'
 
       - name: Decode keystore
         run: |
-          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > ${{ github.workspace }}/release.jks
-          ls -la ${{ github.workspace }}/release.jks
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > TMessagesProj/config/release.keystore
+          ls -la TMessagesProj/config/release.keystore
 
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
@@ -38,7 +40,7 @@ jobs:
       - name: Build release APK
         run: ./gradlew assembleRelease --stacktrace
         env:
-          RELEASE_STORE_FILE: ${{ github.workspace }}/release.jks
+          RELEASE_STORE_FILE: ${{ github.workspace }}/TMessagesProj/config/release.keystore
           RELEASE_STORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           RELEASE_KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           RELEASE_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
